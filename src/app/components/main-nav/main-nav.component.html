@@ -15,20 +15,22 @@
     <mat-toolbar class="navbar navbar-default navbar-static-top" color="primary">
       <div class="container-fluid">
           <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
       
-        <span class="nav-item app-logo">GlobalStoreWeb</span>
-      
-        <a class="spacer"></a>
-        <span class="nav-item" (click)="getToken()">Search<!-- <mat-icon>search</mat-icon>--></span> 
-        <span class="nav-item" *ngIf="token !== null" (click)="login()">Sign In<!-- <mat-icon>search</mat-icon>--></span> 
-        <span class="nav-item" *ngIf="token === null" (click)="logout()">Sign Out<!-- <mat-icon>search</mat-icon>--></span> 
+          <span class="nav-item app-logo">GlobalStoreWeb</span>
+        
+          <a class="spacer"></a>
+          <span class="nav-item" (click)="getToken()">Search<!-- <mat-icon>search</mat-icon>--></span> 
+          <span class="nav-item" routerLink="/home">Home</span>
+          <span class="nav-item" routerLink="/map">Map</span>
+          <span class="nav-item" *ngIf="token !== null" (click)="login()">Sign In<!-- <mat-icon>search</mat-icon>--></span> 
+          <span class="nav-item" *ngIf="token === null" (click)="logout()">Sign Out<!-- <mat-icon>search</mat-icon>--></span> 
         </div>
       
     </mat-toolbar>
@@ -40,7 +42,7 @@
     </div>
     
     <div class="footer">
-      <div class="container footer-content">
+      <div class="container-fluid footer-content">
         @2021 GLobalStore Inc.
       </div>
     </div>
