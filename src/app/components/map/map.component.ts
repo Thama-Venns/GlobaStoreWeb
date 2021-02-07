@@ -29,6 +29,6 @@ export class MapComponent implements OnInit {
       trackUserLocation: true
       }), "top-left");
 
-      this.map.addControl(new mapboxgl.NavigationControl(), "bottom-left");
+      this.map.addControl(new mapboxgl.NavigationControl(), "top-left");
   }
 }
