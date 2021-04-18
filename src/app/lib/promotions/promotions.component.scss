@@ -1,0 +1,24 @@
+@import '../../../assets/style-sheets/global-constants.scss';
+.promo-carosel {
+    border-bottom: 1px solid rgba(226, 226, 226, 0.829); //$border-line;
+    text-align: center;
+    margin: 0;
+    padding: 25px;
+    top: 0;
+    .content {
+        margin: 0 auto;
+        width: 100%;
+    }
+    .title {
+        text-transform: uppercase;
+    }
+    .details {
+        text-align: center;
+        font-size: small;
+    }
+    // background-image: url("../../../assets/images/coresel-img.png");
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-size: cover;
+    // background-position: center;
+}

@@ -8,6 +8,9 @@ export const authConfig: AuthConfig = {
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin,
 
+  // URL of the SPA to redirect the user to after logout
+  postLogoutRedirectUri: window.location.origin,
+
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',
   clientId: environment.clientId,
@@ -26,6 +29,7 @@ export const authConfig: AuthConfig = {
   // The api scope is a usecase specific one
   // scope: 'openid profile email offline_access api',
   scope: environment.scopes,
+  useSilentRefresh: true,
 
   showDebugInformation: true,
 };

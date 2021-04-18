@@ -20,6 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { MapComponent } from './components/map/map.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PromotionsComponent } from './lib/promotions/promotions.component';
+import { MatMenuModule} from '@angular/material/menu';
+import { ButtonFullComponent } from './lib/button-full/button-full.component';
+import { MerchantsComponent } from './components/merchants/merchants.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MerchantsDetailsComponent } from './components/merchants-details/merchants-details.component';
 
 @NgModule({
   declarations: [
@@ -31,17 +37,24 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MainNavComponent,
     SearchComponent,
     MapComponent,
+    PromotionsComponent,
+    ButtonFullComponent,
+    MerchantsComponent,
+    PageNotFoundComponent,
+    MerchantsDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatMenuModule,
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {

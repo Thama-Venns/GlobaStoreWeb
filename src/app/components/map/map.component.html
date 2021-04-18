@@ -1,26 +1,37 @@
 <main class="container-fluid">
     <div id="global-map">
-        <div class="info">
+
+        <div class="info" *ngIf="!activePlace">
             <div class="merchant-nfo">
-                <div class="header">Some Header</div>
+                <div class="search-box">
+                    <mat-icon>search</mat-icon>
+                    <input type="search" placeholder="Find Merchant - Product">
+                </div>
+            </div>
+        </div>
+
+        <div class="info" *ngIf="activePlace">
+            <div class="merchant-nfo">
+                <div class="header">{{ activePlace.name }}</div>
                 <div class="search-box">
                     <mat-icon>search</mat-icon>
                     <input type="search" placeholder="Find Merchant - Product">
                 </div>
                 <div class="body">
-                    <span>Store: New Store</span>
-                    <span>Store Type: Retail</span>
-                    <span>Store Location: 105 and Park</span>
+                    <span><strong>Store:</strong> {{ activePlace.name }}</span>
+                    <span><strong>Store Type:</strong> {{ activePlace.address.addressType }}</span>
+                    <span><strong>Description:</strong> {{ activePlace.description }}</span>
                 </div>
             </div>
-            <div class="merchant-nfo" style="border: 1px solid #e8e8e8;">
-                <div class="header">Some Header</div>
+            <div class="merchant-nfo">
+                <div class="header">Contact</div>
                 <div class="body">
-                    <span>Store: New Store</span>
-                    <span>Store Type: Retail</span>
-                    <span>Store Location: 105 and Park</span>
+                    <span (click)="goToSite(activePlace.website)"><strong>Website:</strong> {{ activePlace.website }}</span>
+                    <span><strong>Phone:</strong> (+27) 71 222 3456</span>
+                    <span><strong>Location:</strong> {{ activePlace.address.addressLine + activePlace.address.addressLine + activePlace.address.zipCode }}</span>
                 </div>
             </div>
+            <lib-button-full label="Visit Store"></lib-button-full>
         </div>
     </div>
 </main>

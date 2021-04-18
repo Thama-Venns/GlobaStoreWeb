@@ -1,1 +1,20 @@
-<p>search works!</p>
+<div class="search-container" (click)="startSerach()">
+    <div id="SearchResults" class="search-results">
+        <br>
+        <p class="result-item" *ngIf="!results">Loading...</p>
+
+        <div *ngIf="results">
+            <div *ngFor="let item of results.value">
+                <ul>
+                    <li class="result-item">{{ item.label }}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="search-bar">
+        <button mat-flat-button class="search-filters"><mat-icon>menu</mat-icon></button>
+        <input class="search-box" type="search" placeholder="Search" (keyup)="onKey($event)">
+        <button mat-flat-button class="search-button"><mat-icon>search</mat-icon></button>
+    </div>
+</div>

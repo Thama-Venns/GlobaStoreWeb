@@ -1,51 +1,54 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [ngClass]="{ hidden : !(isHandset$ | async)!.matches }"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar><span>Menu</span></mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="navbar navbar-default navbar-static-top" color="primary">
-      <div class="container-fluid">
-          <button
-            type="button"
-            aria-label="Toggle sidenav"
-            mat-icon-button
-            (click)="drawer.toggle()"
-            *ngIf="isHandset$ | async">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [ngClass]="{ hidden : !(isHandset$ | async)!.matches }" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar><span>Menu</span></mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item href="#">Link 1</a>
+            <a mat-list-item href="#">Link 2</a>
+            <a mat-list-item href="#">Link 3</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="navbar navbar-default navbar-static-top" color="primary">
+            <div class="container-fluid">
+                <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
-      
-          <span class="nav-item app-logo">GlobalStoreWeb</span>
-        
-          <a class="spacer"></a>
-          <span class="nav-item" (click)="getToken()">Search<!-- <mat-icon>search</mat-icon>--></span> 
-          <span class="nav-item" routerLink="/home">Home</span>
-          <span class="nav-item" routerLink="/map">Map</span>
-          <span class="nav-item" *ngIf="token !== null" (click)="login()">Sign In<!-- <mat-icon>search</mat-icon>--></span> 
-          <span class="nav-item" *ngIf="token === null" (click)="logout()">Sign Out<!-- <mat-icon>search</mat-icon>--></span> 
+
+                <span class="nav-item app-logo">GlobalStoreWeb</span>
+                <span class="search-box"><lib-search></lib-search></span>
+
+                <a class="spacer"></a>
+                <span class="nav-item" mat-button *ngIf="userCountry" [matMenuTriggerFor]="countryMenu">
+                    <img class="ctry-img" src="{{ userCountry.flag }}" alt="Not Found">
+                    {{ userCountry.name }}
+                <span class="material-icons">arrow_drop_down</span></span>
+                <mat-menu #countryMenu="matMenu" yPosition="above">
+                    <button mat-menu-item>My COuntry</button>
+                    <button (click)="logout()" mat-menu-item>Logout</button>
+                </mat-menu>
+                <span class="nav-item" mat-button routerLink="/home">Home</span>
+                <span class="nav-item" mat-button routerLink="/map">Map</span>
+                <span class="nav-item" mat-button *ngIf="!isLoggein()" (click)="login()">Sign In<!-- <mat-icon>search</mat-icon>--></span>
+                <span class="nav-item" mat-button *ngIf="isLoggein()" [matMenuTriggerFor]="aboveMenu">{{ claims.given_name[0] + " " + claims.family_name[0] }} <span class="material-icons">arrow_drop_down</span></span>
+                <mat-menu #aboveMenu="matMenu" yPosition="above">
+                    <button mat-menu-item>Manage Account</button>
+                    <button (click)="logout()" mat-menu-item>Logout</button>
+                </mat-menu>
+            </div>
+
+        </mat-toolbar>
+        <!-- Add Content Here -->
+
+        <div class="global-content-wrapper">
+            <ng-content></ng-content>
+            <router-outlet></router-outlet>
         </div>
-      
-    </mat-toolbar>
-    <!-- Add Content Here -->
 
-    <div class="global-content-wrapper">
-      <ng-content></ng-content>
-      <router-outlet></router-outlet>
-    </div>
-    
-    <div class="footer">
-      <div class="container-fluid footer-content">
-        @2021 GLobalStore Inc.
-      </div>
-    </div>
+        <div class="footer">
+            <div class="container-fluid footer-content">
+                @2021 GLobalStore Inc.
+            </div>
+        </div>
 
-  </mat-sidenav-content>
+    </mat-sidenav-content>
 </mat-sidenav-container>

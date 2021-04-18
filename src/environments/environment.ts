@@ -8,13 +8,17 @@ export const environment = {
   // Auth client configurations
   authServer: 'http://localhost:5000',
   clientId : 'globalStoreWeb',
-  scopes: 'globalApi read write openid',
+  scopes: 'globalApi read write profile openid',
 
   // Mapbox
   mapboxKey: 'pk.eyJ1IjoibnR2aW5uIiwiYSI6ImNra2xzd2hsYjJrYWIybm1ucGRjeWg2OHcifQ.LJ4xUzbYzprvzVlXf0fScg',
 
   // GlobalStoreAPi Endpoints
-  globalStoreCountries: 'http://localhost:5001/v1/Countries' 
+  globalStoreCountries: 'http://localhost:5001/v1/Countries',
+  globalStoreStores: 'http://localhost:5001/v1/Stores',
+  globalStoreSearch: 'http://localhost:5001/v1/Search',
+  globalStoreMerchants: 'http://localhost:5001/v1/Merchants',
+
 };
 
 /*

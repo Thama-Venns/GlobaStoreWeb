@@ -1,0 +1,29 @@
+<main class="container-fluid">
+    <div class="row" *ngIf="!merchantSelected">
+        <div class="col-sm card" *ngFor="let item of merchants">
+            <div class="card-header">{{ item.name }}</div>
+            <div class="card-body">
+                <p>Type: {{ item.merchantClassification }}</p>
+                <p>Website: {{ item.website }}</p>
+                <p>Description: {{ item.description }}</p>
+                <br>
+                <p>Stores: {{ item.stores.length }}</p>
+            </div>
+            <lib-button-full class="visit" label="View Merchant" [queryParams]="{ name: item.name }" [routerLink]="['/merchants']" (click)="OnSelect(item.id)"></lib-button-full>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="merchantSelected">
+        <div class="col-sm card">
+            <div class="card-header">{{ merchantSelected.name }}</div>
+            <div class="card-body">
+                <p>Type: {{ merchantSelected.merchantClassification }}</p>
+                <p>Website: {{ merchantSelected.website }}</p>
+                <p>Description: {{ merchantSelected.description }}</p>
+                <br>
+                <p>Stores: {{ merchantSelected.stores.length }}</p>
+            </div>
+            <lib-button-full class="visit" label="View Merchant" [queryParams]="{ name: item.name }" [routerLink]="['/merchants']" (click)="OnSelect(item.id)"></lib-button-full>
+        </div>
+    </div>
+</main>

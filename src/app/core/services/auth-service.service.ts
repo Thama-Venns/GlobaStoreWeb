@@ -14,14 +14,24 @@ export class AuthService {
 
   public login() {
     this._oauthService.initLoginFlow();
+    this._oauthService.setupAutomaticSilentRefresh();
   }
 
   public logout() {
     this._oauthService.logOut();
   }
 
-  getToken():string {
+  public getToken():string {
     let x = this._oauthService.getAccessToken();
+    
     return x;
+  }
+
+  public getClaims() {
+    return this._oauthService.getIdentityClaims();
+  }
+
+  public isLoggein():boolean {
+    return this._oauthService.hasValidIdToken();
   }
 }

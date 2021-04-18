@@ -1,5 +1,17 @@
-<main class="container">
-    <div class="content">
-        <p>{{ countries?.value | json }}</p>
+<app-promotions></app-promotions>
+
+<main class="container-fluid">
+    <div class="content row">
+        <div class="col" *ngFor="let item of countries?.value">
+            <div class="card">
+                <h3 class="card-header">{{ item.name }}</h3>
+                <div class="details">
+                    <p class="item">{{ item.subregion }}</p>
+                </div>
+                <div class="img-container">
+                    <img class="image" src="{{ item.flag }}" alt="Not Found">
+                </div>
+            </div>
+        </div>
     </div>
 </main>
